@@ -72,6 +72,29 @@
     - Declarative Pipeline (Jenkins Pipeline)
     - Scripted Pipeline (Through code)
     
+            node{
+
+                stage 'clean'
+
+                deleteDir()
+
+                stage 'checkout'
+
+                git url: 'https://github.com/sebsto/webapp.git'
+
+                stage 'compile'
+
+                sh 'mvn compile'
+
+                stage 'build'
+
+                sh 'mvn package'
+
+                stage 'deploy'
+
+                sh 'sh /opt/docker_installation.sh'
+              }
+    
 ## Jenkins lock
 
     If you want to lock the jenkins to prevent further executions then you can achive it in two levels
